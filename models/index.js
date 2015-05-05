@@ -20,7 +20,7 @@ var Topic = Database.sequelize.define('Topic', {
 var User = Database.sequelize.define('User', {
   id: { type: Database.DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
   username: Database.DataTypes.STRING,
-  password: Database.DataTypes.STRING,
+  password: Database.DataTypes.STRING
 });
 
 Message.belongsTo(User);
