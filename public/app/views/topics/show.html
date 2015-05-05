@@ -6,7 +6,7 @@
     {{topic.description}}
 </p>
 
-<h2>{{Messages.length}} <span ng-pluralize count="Messages.length" when="{ '0': 'viestiä', 'one': 'viesti', 'other': 'viestiä' }"></span></h2>
+<h2>{{Messages.length}} <span ng-pluralize count="Messages.length" when="{ '0': 'threads', 'one': 'thread', 'other': 'threads' }"></span></h2>
 
 <ul class="media-list">
   <li class="media" ng-repeat="message in Messages">
@@ -27,17 +27,17 @@
   </li>
 </ul>
 
-<h2 ng-if="userLoggedIn">Lisää oma viestisi</h2>
+<h2 ng-if="userLoggedIn">Add new thread</h2>
 
 <form ng-if="userLoggedIn">
   <div class="form-group">
-    <label>Otsikko</label>
+    <label>Name</label>
     <input type="text" class="form-control" ng-model="newMessage.title">
   </div>
 
   <div class="form-group">
-    <label>Viesti</label>
+    <label>Message</label>
     <textarea class="form-control" ng-model="newMessage.content"></textarea>
   </div>
-  <button class="btn btn-success" ng-click="addMessage()">Lisää viesti</button>
+  <button class="btn btn-success" ng-click="addMessage()">Create</button>
 </form>

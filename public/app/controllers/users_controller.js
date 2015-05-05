@@ -1,5 +1,6 @@
 FoorumApp.controller('UsersController', function($scope, $location, Api){
     
+    $scope.errorMessage = null;
     $scope.user = { username: "", password: "" };
     $scope.newUser = { username: "", password: "" };
     
