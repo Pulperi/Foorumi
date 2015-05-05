@@ -25,7 +25,12 @@ router.get('/:id', function(req, res, next) {
                 model: Models.User
             }
         }
-    }).then(function(topic) { 
+    }).then(function(topic) {
+        topic.Messages.forEach(function(message) {
+            if (message.User) {
+                message.User.password = undefined;
+            }
+        });
         res.send(topic); 
     });
 });

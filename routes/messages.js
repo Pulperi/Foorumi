@@ -7,12 +7,12 @@ var Models = require('../models');
 // Huom! Kaikki polut alkavat polulla /messages
 
 
-// ADDED FOR DEBUG PURPOSES DISABLE ON RELEASE
-router.get('/', function(req, res, next) {
-    Models.Message.findAll().then(function(messages) {
-        res.send(messages);
-    });
-});
+//// ADDED FOR DEBUG PURPOSES DISABLE ON RELEASE
+//router.get('/', function(req, res, next) {
+//    Models.Message.findAll().then(function(messages) {
+//        res.send(messages);
+//    });
+//});
 
 // GET /messages/:id
 router.get('/:id', function(req, res, next) {
@@ -24,9 +24,15 @@ router.get('/:id', function(req, res, next) {
             model: Models.Reply, 
             include: {
                 model: Models.User
+            },
+            exclude: {
+                model: Models.User.password
             }
         }
-    }).then(function(message) { 
+    }).then(function(message) {
+        message.Replies.forEach(function(reply) {
+            reply.User.password = undefined;
+        });
         res.send(message); 
     });
 });
