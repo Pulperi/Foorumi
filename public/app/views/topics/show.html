@@ -6,10 +6,10 @@
     {{topic.description}}
 </p>
 
-<h2>{{topic.Messages.length}} <span ng-pluralize count="topic.Messages.length" when="{ '0': 'viestiä', 'one': 'viesti', 'other': 'viestejä' }"></span></h2>
+<h2>{{Messages.length}} <span ng-pluralize count="Messages.length" when="{ '0': 'viestiä', 'one': 'viesti', 'other': 'viestiä' }"></span></h2>
 
 <ul class="media-list">
-  <li class="media" ng-repeat="message in topic.Messages">
+  <li class="media" ng-repeat="message in Messages">
     <div class="media-body">
       <h4 class="media-heading">
         <a ng-href="#/messages/{{message.id}}">{{message.title}}</a>
@@ -20,16 +20,16 @@
       </p>
 
       <p class="text-muted">
-        Käyttäjätunnus tähän,
+        {{message.User.username}},
         <span> {{message.createdAt | date:"M.d.yyyy HH:mm"}}</span>
       </p>
     </div>
   </li>
 </ul>
 
-<h2>Lisää oma viestisi</h2>
+<h2 ng-if="userLoggedIn">Lisää oma viestisi</h2>
 
-<form>
+<form ng-if="userLoggedIn">
   <div class="form-group">
     <label>Otsikko</label>
     <input type="text" class="form-control" ng-model="newMessage.title">

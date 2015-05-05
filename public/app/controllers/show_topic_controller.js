@@ -1,6 +1,11 @@
 FoorumApp.controller('ShowTopicController', function($scope, $routeParams, $location, Api){
     Api.getTopic($routeParams.id).success(function(topic) {
         $scope.topic = topic;
+        $scope.Messages = [];
+        $scope.topic.Messages.forEach(function(message) {
+            if(message.title !== "" && message.title !== null) 
+                $scope.Messages.push(message);
+        });
     }).error(function() {
         $location.path('/');
     });

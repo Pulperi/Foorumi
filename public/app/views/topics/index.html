@@ -13,9 +13,9 @@
   </div>
 </div>
 
-<h2>Lisää oma aihealueesi</h2>
+<h2 ng-if="userLoggedIn">Lisää oma aihealueesi</h2>
 
-<form>
+<form ng-if="userLoggedIn">
   <div class="form-group">
     <label>Nimi</label>
     <input type="text" class="form-control" ng-model="newTopic.name">

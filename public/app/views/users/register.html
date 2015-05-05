@@ -1,22 +1,22 @@
 <div class="page-header">
-  <h1>Rekisteröidy</h1>
+    <h1>Rekisteröidy</h1>
 </div>
 
-<form>
-  <div class="form-group">
-    <label>Käyttäjätunnus</label>
-    <input type="text" class="form-control">
-  </div>
+<form name="registerForm">
+    <div class="form-group">
+        <label>Käyttäjätunnus</label>
+        <input class="form-control" type="text" ng-model="newUser.username" required>
+    </div>
 
-  <div class="form-group">
-    <label>Salasana</label>
-    <input type="text" class="form-control">
-  </div>
+    <div class="form-group">
+        <label>Salasana</label>
+        <input class="form-control" type="password" ng-model="newUser.password" required>
+    </div>
 
-  <div class="form-group">
-    <label>Salasana uudelleen</label>
-    <input type="text" class="form-control">
-  </div>
+    <div class="form-group">
+        <label>Salasana uudelleen</label>
+        <input class="form-control" type="password" ng-model="passwordConfirm" required match="newUser.password">
+    </div>
 
-  <button class="btn btn-success">Rekisteröidy</button>
+    <button class="btn btn-success" ng-disabled="registerForm.$invalid" ng-click="register()">Rekisteröidy</button>
 </form>
