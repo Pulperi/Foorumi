@@ -11,12 +11,12 @@ FoorumApp.controller('UsersController', function($scope, $location, Api){
         if ($scope.user && $scope.user.username !== "" && $scope.user.password !== "")
             Api.login($scope.user)
             .success(function() {
-                console.log('Kirjautuminen onnistui!');
+                console.log('Login success, redirecting to root!');
                 $location.path('/');
             })
             .error(function() {
-                console.log('Kirjautuminen epäonnistui! Lisätään käyttäjälle virheilmoitus');
-                $scope.errorMessage = 'Väärä käyttäjätunnus tai salasana!';
+                console.log('Login failed! Adding error message.');
+                $scope.errorMessage = 'Wrong username and/or password!';
             });
     };
     
@@ -24,7 +24,7 @@ FoorumApp.controller('UsersController', function($scope, $location, Api){
         if ($scope.newUser && $scope.newUser.username !== "" && $scope.newUser.password !== "" && $scope.passwordConfirm === $scope.newUser.password)
             Api.register($scope.newUser)
             .success(function() {
-                console.log('Kirjautuminen onnistui!');
+                console.log('Registered success, redirecting to root!');
                 $location.path('/');
             })
             .error(function(error) {

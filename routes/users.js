@@ -19,7 +19,7 @@ router.post('/', function(req, res, next){
                 res.json(user);
             });
         } else {
-            res.status(400).json({ error: 'Käyttäjätunnus on jo käytössä!' });
+            res.status(400).json({ error: 'Username already in use!' });
         }
     });
 });
