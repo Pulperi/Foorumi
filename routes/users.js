@@ -26,26 +26,27 @@ router.post('/', function(req, res, next){
 
 // POST /users/authenticate
 router.post('/authenticate', function(req, res, next){
-    // Tarkista käyttäjän kirjautuminen tässä. Tee se katsomalla, löytyykö käyttäjää annetulla käyttäjätunnuksella ja salasanalla (Vinkki: findOne ja sopiva where)
     var userToCheck = req.body;
 
-    if (userToCheck == null || userToCheck.userName == null || userToCheck.password == null)
-        res.sendStatus(403);
+    if(userToCheck == null || userToCheck.username == null || userToCheck.password == null){
+        res.send(403);
+    }
 
     Models.User.findOne({
         where: {
             username: userToCheck.username,
             password: userToCheck.password
         }
-    }).then(function(user) {
-        if (user) {
+    }).then(function(user){
+        if(user){
             req.session.userId = user.id;
             res.json(user);
-        } else {
-            res.sendStatus(403);
+        }else{
+            res.send(403);
         }
     });
 });
+
 
 // GET /users/logged-in
 router.get('/logged-in', function(req, res, next){

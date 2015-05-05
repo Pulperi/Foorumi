@@ -8,6 +8,7 @@ FoorumApp.controller('UsersController', function($scope, $location, Api){
     
     $scope.login = function() {
         // Toteuta kontrolleri tähän
+        debugger;
         if ($scope.user && $scope.user.username !== "" && $scope.user.password !== "")
             Api.login($scope.user)
             .success(function() {
